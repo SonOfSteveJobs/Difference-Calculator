@@ -1,10 +1,9 @@
-import _ from 'lodash';
 import fs from 'fs';
 import { cwd } from 'node:process';
 import path from 'path';
-import parse from './parser.js'
+import parse from './parser.js';
 import getDiff from './getDiff.js';
-import simple from './formater.js'
+import simple from './formater.js';
 
 const getData = (filepath) => {
   const fullPath = path.resolve(cwd(), filepath);

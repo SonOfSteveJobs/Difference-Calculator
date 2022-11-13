@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "hexlet project №2",
-  "main": "index.js",
+  "main": "src/index.js",
   "type": "module",
   "bin": {
     "gendiff": "bin/gendiff.js"
@@ -21,6 +21,13 @@
   },
   "homepage": "https://github.com/SonOfSteveJobs/frontend-project-46#readme",
   "dependencies": {
-    "commander": "^9.4.1"
+    "commander": "^9.4.1",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
   }
 }

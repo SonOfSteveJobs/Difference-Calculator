@@ -14,7 +14,7 @@ const simple = (data) => {
           `+ ${obj.key}: ${obj.valueNew}`,
         ].join('\n');
       case 'unchanged':
-        return ` ${obj.key}: ${obj.value}`;
+        return `  ${obj.key}: ${obj.value}`;
       default:
         throw new Error(`Unknown operation: ${operation}`);
     }

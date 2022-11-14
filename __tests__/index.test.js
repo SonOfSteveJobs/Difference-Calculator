@@ -15,3 +15,8 @@ test('compare flat JSON files', () => {
   const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
   expect(actual).toBe(expected);
 });
+
+test('compare flat YAML files', () => {
+  const actual = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
+  expect(actual).toBe(expected);
+});

@@ -6,6 +6,10 @@ const getDiff = (data1, data2) => {
   const sortedKeys = _.sortBy(_.union([...keys1, ...keys2]));
 
   const mapped = sortedKeys.map((key) => {
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
+      return { key, children: getDiff(data1[key], data2[key]), operation: 'nested' };
+    }
+
     if (!Object.hasOwn(data2, key)) {
       return { key, value: data1[key], operation: 'removed' };
     }

@@ -24,10 +24,7 @@ const stylish = (data) => {
           throw new Error(`Unknown operation: '${operation}'!`);
       }
     });
-    return ['{',
-      ...lines,
-      `${bracketIndent}}`,
-    ].join('\n');
+    return ['{', ...lines, `${bracketIndent}}`].join('\n');
   };
   return iter(data, 0);
 };

@@ -27,7 +27,11 @@ const getDiff = (data1, data2) => {
       };
     }
 
-    return { key, value: data1[key], operation: 'unchanged' };
+    return {
+      key,
+      value: data1[key],
+      operation: 'unchanged',
+    };
   });
 
   return mapped;

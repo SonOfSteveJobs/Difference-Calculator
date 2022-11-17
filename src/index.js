@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { cwd } from 'node:process';
 import path from 'path';
-import formatDiff from './formaters/formater.js';
+import formatDiff from './formaters/index.js';
 import parse from './parser.js';
 import getDiff from './getDiff.js';
 

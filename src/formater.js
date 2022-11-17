@@ -1,28 +1,37 @@
-// import _ from 'lodash';
+import { stringify, getBracketIndent, getIndent } from './stringfy.js';
 
-const simple = (data, spacesCount = 4) => {
-  const strings = data.map((obj) => {
-    const { operation } = obj;
-    switch (operation) {
-      case 'nested':
-        return `${' '.repeat(spacesCount)}${obj.key}: ${simple(obj.children, spacesCount + 2)}`;
-      case 'removed':
-        return `${' '.repeat(spacesCount)}- ${obj.key}: ${obj.value}`;
-      case 'added':
-        return `${' '.repeat(spacesCount)}+ ${obj.key}: ${obj.value}`;
-      case 'changed':
-        return [
-          `${' '.repeat(spacesCount)}- ${obj.key}: ${obj.valueOld}`,
-          `${' '.repeat(spacesCount)}+ ${obj.key}: ${obj.valueNew}`,
-        ].join('\n');
-      case 'unchanged':
-        return `${' '.repeat(spacesCount)}  ${obj.key}: ${obj.value}`;
-      default:
-        throw new Error(`Unknown operation: ${operation}`);
-    }
-  });
+const stylish = (data) => {
+  const iter = (diff, depth) => {
+    const indent = getIndent(depth).slice(0, -2);
+    const bracketIndent = getBracketIndent(depth);
+    const lines = diff.map((obj) => {
+      const { operation } = obj;
+      switch (operation) {
+        case 'added':
+          return `${indent}+ ${obj.key}: ${stringify(obj.value, depth + 1)}`;
+        case 'removed':
+          return `${indent}- ${obj.key}: ${stringify(obj.value, depth + 1)}`;
+        case 'changed':
+          return [
+            `${indent}- ${obj.key}: ${stringify(obj.valueOld, depth + 1)}`,
+            `${indent}+ ${obj.key}: ${stringify(obj.valueNew, depth + 1)}`,
+          ].join('\n');
+        case 'unchanged':
+          return `${indent}  ${obj.key}: ${stringify(obj.value, depth + 1)}`;
+        case 'nested':
+          return `${indent}  ${obj.key}: ${iter(obj.children, depth + 1)}`;
+        default:
+          throw new Error(`Unknown operation: '${operation}'!`);
+      }
+    });
 
-  return ['{', ...strings, '}'].join('\n');
+    return ['{',
+      ...lines,
+      `${bracketIndent}}`,
+    ].join('\n');
+  };
+
+  return iter(data, 0);
 };
 
-export default simple;
+export default stylish;

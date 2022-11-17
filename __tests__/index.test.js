@@ -9,14 +9,25 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-const expected = readFile('flat_JSON_test.txt');
+const expected = readFile('expected_stylish.txt');
+const expected2 = readFile('expected_plain.txt');
 
-test('compare flat JSON files', () => {
+test('compare JSON files', () => {
   const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
   expect(actual).toBe(expected);
 });
 
-test('compare flat YAML files', () => {
+test('compare YAML files', () => {
   const actual = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
   expect(actual).toBe(expected);
+});
+
+test('compare JSON files plain format', () => {
+  const actual = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain');
+  expect(actual).toBe(expected2);
+});
+
+test('compare YAML files plain format', () => {
+  const actual = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain');
+  expect(actual).toBe(expected2);
 });

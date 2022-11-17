@@ -5,7 +5,7 @@
 [![Builder CI](https://github.com/SonOfSteveJobs/frontend-project-46/actions/workflows/projectCI.yml/badge.svg)](https://github.com/SonOfSteveJobs/frontend-project-46/actions/workflows/projectCI.yml)
 
 ## Description
-This tool finds a difference between two files in JSON or YAML format. The output can be generated in 3 different formats: stylish, plain or json.
+This tool finds the difference between two files in JSON or YAML format. The output can be generated in 3 different ways: stylish, plain or json.
 
 ## Setup
 Clone the project

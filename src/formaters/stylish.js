@@ -1,4 +1,25 @@
-import { stringify, getBracketIndent, getIndent } from '../stringfy.js';
+import _ from 'lodash';
+
+const getBracketIndent = (depth, replacer = ' ', count = 4) => replacer.repeat(depth * count);
+const getIndent = (depth, replacer = ' ', count = 4) => replacer.repeat((depth + 1) * count);
+
+const stringify = (currentValue, depth) => {
+  if (!_.isObject(currentValue)) {
+    return `${currentValue}`;
+  }
+
+  const currentIndent = getIndent(depth);
+  const bracketIndent = getBracketIndent(depth);
+  const lines = Object
+    .entries(currentValue)
+    .map(([key, val]) => `${currentIndent}${key}: ${stringify(val, depth + 1)}`);
+
+  return [
+    '{',
+    ...lines,
+    `${bracketIndent}}`,
+  ].join('\n');
+};
 
 const stylish = (data) => {
   const iter = (diff, depth) => {

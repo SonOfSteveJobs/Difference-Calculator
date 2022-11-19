@@ -11,7 +11,7 @@ This tool finds the difference between two files in JSON or YAML format. The out
 
 ## Requirements:
 
-- Node.js 18 
+- Node.js v.18 +
 
 ## Setup:
 Clone the project

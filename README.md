@@ -4,8 +4,14 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1e9681e02a15b8354d21/test_coverage)](https://codeclimate.com/github/SonOfSteveJobs/frontend-project-46/test_coverage)
 [![Builder CI](https://github.com/SonOfSteveJobs/frontend-project-46/actions/workflows/projectCI.yml/badge.svg)](https://github.com/SonOfSteveJobs/frontend-project-46/actions/workflows/projectCI.yml)
 
+### Difference calculator
+
 ## Description
 This tool finds the difference between two files in JSON or YAML format. The output can be generated in 3 different ways: stylish, plain or json.
+
+## Requirements:
+
+- Node.js 18 
 
 ## Setup
 Clone the project

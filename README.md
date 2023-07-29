@@ -5,6 +5,7 @@
 [![Builder CI](https://github.com/SonOfSteveJobs/frontend-project-46/actions/workflows/projectCI.yml/badge.svg)](https://github.com/SonOfSteveJobs/frontend-project-46/actions/workflows/projectCI.yml)
 
 ## Description:
+Analog of https://www.jsondiff.com
 This tool finds the difference between two files in JSON or YAML format. The output can be generated in 3 different ways: stylish, plain or json.
 
 ## Requirements:
